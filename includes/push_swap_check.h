@@ -5,7 +5,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "GNL/get_next_line.h"
+# include "get_next_line.h"
+# include "libft.h"
 
 # define ACTION_AMT 11
 # define ACTION_STRLEN_MAX 4
