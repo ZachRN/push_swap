@@ -2,8 +2,6 @@
 # define FT_PUSH_SWAP_CHECK_H
 
 # include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include <stdarg.h>
 # include "get_next_line.h"
 # include "libft.h"

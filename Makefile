@@ -1,28 +1,35 @@
 NAME = push_swap.a
+BUILD_DIR = build
 # PUSH_SWAP_FILES = main.o
-GNL_FILES = srcs/GNL/get_next_line.o
-OBJ_FILES = $(GNL_FILES)
-HEADER_FILES = push_swap_check.h
+GNL_SRC_PATH = srcs/GNL/
+GNL_SRCS = $(wildcard $(GNL_SRC_PATH)*.c)
+GNL_OBJS = $(GNL_SRCS:.c=.o)
+GNL_OBJS = $(GNL_OBJS:$(GNL_SRC_PATH)%:%)
+OBJ_FILES = $(patsubst %,$(BUILD_DIR)/%.o,$(GNL_OBJS))
+HEADER_FILES = $(wildcard includes/*.h)
 CFLAGS = -Wall -Werror -Wextra
+CC = gcc
 
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES) libft.a
-	ar rc $@ $(OBJ_FILES) ./srcs/libft/libft.a
+$(NAME): $(OBJ_FILES)
+	ar rc $@ $^
 
-%.o: %.c
-	$(CC) -I includes -c $(CFLAGS) -o $@ $<
+$(BUILD_DIR)/%.o: $(GNL_SRC_PATH)%.c
+	$(CC) -c $(CFLAGS) -o $@ $<
 
-%.a: 
-	$(MAKE) -C ./srcs/libft
+#dir:
+#	mkdir -p build
+# %.a: 
+
+# 	$(MAKE) -C ./srcs/libft
 
 clean:
 	$(MAKE) clean -C ./srcs/GNL
-	$(MAKE) clean -C ./srcs/libft
 	rm -f *.o 
+	#rmdir $(BUILD_DIR)
 
 fclean: clean
-	$(MAKE) fclean -C ./srcs/libft
 	rm -f $(NAME)
 
 re: fclean all
