@@ -1,3 +1,5 @@
+#include "includes/push_swap_check.h"
+
 int	ps_atoi(const char *str, int *num)
 {
 	int			sign;

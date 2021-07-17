@@ -1,36 +1,44 @@
 NAME = push_swap.a
 BUILD_DIR = build
 # PUSH_SWAP_FILES = main.o
-GNL_SRC_PATH = srcs/GNL/
-GNL_SRCS = $(wildcard $(GNL_SRC_PATH)*.c)
-GNL_OBJS = $(GNL_SRCS:.c=.o)
-GNL_OBJS = $(GNL_OBJS:$(GNL_SRC_PATH)%:%)
-OBJ_FILES = $(patsubst %,$(BUILD_DIR)/%.o,$(GNL_OBJS))
-HEADER_FILES = $(wildcard includes/*.h)
 CFLAGS = -Wall -Werror -Wextra
 CC = gcc
 
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES)
-	ar rc $@ $^
+$(NAME): $(OBJ_FILES) build_dir
+	@echo Compiling Libft, GNL, and ft_printf together
+	@ make -C ./srcs bonus > /dev/null
+	@echo libft.a compiled
+	@echo Compiling Push_swap files together
+#code in
+	@echo Push_swap.a completed
+	@echo Assembling Program completely
+#code in
+	@echo Program assembled!
 
-$(BUILD_DIR)/%.o: $(GNL_SRC_PATH)%.c
-	$(CC) -c $(CFLAGS) -o $@ $<
-
-#dir:
-#	mkdir -p build
-# %.a: 
-
-# 	$(MAKE) -C ./srcs/libft
+build_dir:
+	clear
+	@if [ -d "./$(BUILD_DIR)" ]; then \
+	echo "Build Directory Already Exists"; \
+	else \
+	mkdir -p $(BUILD_DIR); \
+	fi
 
 clean:
-	$(MAKE) clean -C ./srcs/GNL
-	rm -f *.o 
-	#rmdir $(BUILD_DIR)
+	clear
+	@echo Cleaning all object files
+	@ make clean -C ./srcs > /dev/null
+	@echo libft.o files cleaned
 
 fclean: clean
-	rm -f $(NAME)
+	@ echo Cleaning all Object Files
+	@ make fclean -C ./srcs > /dev/null
+	@echo Cleaning Libraries
+	@echo Removing Program
+	@echo Removing Build Directory
+	@ rmdir $(BUILD_DIR)
+	@ rm -f $(NAME)
 
 re: fclean all
 
