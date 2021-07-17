@@ -13,7 +13,7 @@ t_circledata    *firstEntry(int value)
     return (temp);
 }
 
-int     insertEnd(t_circledata **start, int value)
+int     insertEnd(t_circledata **start, int value, int error)
 {
     t_circledata *final_node;
     t_circledata *new_node;
@@ -30,7 +30,7 @@ int     insertEnd(t_circledata **start, int value)
     (*start)->prev = new_node;
     new_node->prev = final_node;
     final_node->next = new_node;
-    return (1);
+    return (error);
 }
 
 void    print_list(t_circledata **start)

@@ -21,6 +21,12 @@ typedef struct s_head
     t_circledata *head;
 }               t_head;
 
+typedef struct s_commands
+{
+	char str[4];
+	struct s_commands *next;
+}				t_commands;
+
 /*-------------------Linked List .c--------------------*/
 t_circledata    *firstEntry(int value);
 int             insertEnd(t_circledata **start, int value);
