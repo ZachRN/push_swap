@@ -24,7 +24,7 @@ int	ps_atoi(const char *str, int *numInput)
 	if (!((*str >= '0' && *str <= '9') || *str == '\0'))
 		return (-1);
 	//*num = (int)(value * sign);
-	numInput = value;
+	*numInput = (int)value;
 	return (1);
 }
 
@@ -65,21 +65,22 @@ int input_numbers(int argc, char *argv[], t_head *stack_a_head)
 
 	input = 1;
 	numInput = 0;
-	error = ps_atoi(argv[1], numInput);
+	error = ps_atoi(argv[1], &numInput);
 	if (error == -1)
-		return (-1)
-	stack_a_head.head = firstEntry(numInput);
+		return (-1);
+	stack_a_head->head = firstEntry(numInput);
 	while (error != -1 && input < argc - 1)
 	{
-		error = ps_atoi(argv[input + 1], numInput);
-		error = insertEnd(stack_a_head.head, numInput, error)
+		error = ps_atoi(argv[input + 1], &numInput);
+		error = insertEnd(stack_a_head->head, numInput, error);
 		input++;
 	}
 	if (error == -1)
 	{
-		free_list(stack_a_head.head);
+		free_list(stack_a_head->head);
 		return (-1);
 	}
+	return (1);
 }
 
 int	dupe_check_list(t_circledata *stack_a, int num_input, int *list)
@@ -87,7 +88,7 @@ int	dupe_check_list(t_circledata *stack_a, int num_input, int *list)
 	int dupe_nav;
 
 	dupe_nav = 0;
-	while (dupe_nav < num_input);
+	while (dupe_nav < num_input)
 	{
 		if (list[dupe_nav] == stack_a->value)
 		{
@@ -111,18 +112,19 @@ int duplication_check_two(t_circledata *stack_a, int argc)
 		return (-1);
 	final_node = stack_a->prev;
 	num_input = 1;
-	list[0] = final_node.value;
+	list[0] = final_node->value;
 	while (stack_a != final_node && error > 0)
 	{
-		error = dupe_check_list(stack)
+		error = dupe_check_list(stack_a, num_input, list);
 		if (error == -1)
 		{
 			free(stack_a);
 			return (-1);
 		}
-		stack_a = stack_a->next;
 		list[num_input] = stack_a->value;
+		stack_a = stack_a->next;
 		num_input++;
 	}
+	free(list);
 	return (1);
 }

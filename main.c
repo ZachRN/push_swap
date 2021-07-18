@@ -8,16 +8,21 @@ int	main(int argc, char *argv[])
 	t_head stack_a_head;
 
 	if (!(argc > 1))
-		return (0);
-	error = input_numbers(argc, argv, stack_a_head);
+		printf("error");
+	error = input_numbers(argc, argv, &stack_a_head);
+	//printf("Error 1");
 	if (error == -1)
-		return (0);
-	error = duplication_check(stack_a, argc);
+		printf("error");
+	error = duplication_check_two(stack_a_head.head, argc);
+	//printf("Error 2");
 	if (error -1)
-		return (0);
-	error = action_input(stack_a);
+		printf("error");
+	error = action_input(stack_a_head.head);
 	if (error -1)
-		return (0);
+		printf("error");
+	if (error != -1)
+		print_list(stack_a_head.head);
+	//free_list(stack_a_head.head);
 	system("leaks a.out");
 	return (0);
 }

@@ -31,5 +31,26 @@ int action_check(char *str)
 int action_input(t_circledata *stack_a)
 {
 	//LINKED LIST COMMANDS TOGETHER MAKES MOST SENSE
-	
+	t_commands	*start;
+	char 		*cmd;
+	int			error;
+
+	start = (t_commands *)malloc(sizeof(t_commands));
+	start->next = NULL;
+	if (!start)
+	{
+		free(stack_a);
+		return (-1);
+	}
+	while (get_next_line(0, &cmd) > 0)
+	{
+		error = action_check(cmd);
+		if (error == -1)
+			return (free_action(stack_a, start, cmd));
+		cmdInsertEnd(start, cmd);
+	}
+	cmdprint_list(start);
+	free(cmd);
+	cmdFree_List(start);
+	return(1);
 }

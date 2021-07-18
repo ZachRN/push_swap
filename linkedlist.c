@@ -13,7 +13,7 @@ t_circledata    *firstEntry(int value)
     return (temp);
 }
 
-int     insertEnd(t_circledata **start, int value, int error)
+int     insertEnd(t_circledata *start, int value, int error)
 {
     t_circledata *final_node;
     t_circledata *new_node;
@@ -24,41 +24,76 @@ int     insertEnd(t_circledata **start, int value, int error)
         //free_func;
         return (-1);
     }
-    final_node = (*start)->prev;
+    final_node = start->prev;
     new_node->value = value;
-    new_node->next = *start;
-    (*start)->prev = new_node;
+    new_node->next = start;
+    start->prev = new_node;
     new_node->prev = final_node;
     final_node->next = new_node;
     return (error);
 }
+int cmdInsertEnd(t_commands *start, char *cmd)
+{
+	t_commands *new_node;
 
-void    print_list(t_circledata **start)
+	new_node = (t_commands *)malloc(sizeof(t_commands));
+	if (!new_node)
+		return (-1);
+	new_node->str = NULL;
+	new_node->next = NULL;
+	while (start->next)
+		start = start->next;
+	start->str = cmd;
+	start->next = new_node;
+	return (1);
+}
+void	cmdFree_List(t_commands *start)
+{
+	t_commands *nav;
+
+	nav = start;
+	while (start->next != NULL)
+	{
+		start = start->next;
+		free(nav->str);
+		free(nav);
+		nav = start;
+	}
+	free(nav);
+}
+void    free_list(t_circledata *start)
+{
+    t_circledata *final_node;
+    t_circledata *nav;
+    final_node = start->prev;
+    nav = start;
+    while (start != final_node)
+    {
+        start = start->next;
+        free(nav);
+        nav = start;
+    }
+    free(nav);
+}
+void	cmdprint_list(t_commands *start)
+{
+	while (start->next)
+	{
+		printf("Cmd: %s\n", start->str);
+		start = start->next;
+	}
+}
+void    print_list(t_circledata *start)
 {
     t_circledata *final_node;
     t_circledata *nav;
 
-    final_node = (*start)->prev;
-    nav = (*start);
+    final_node = start->prev;
+    nav = start;
     while (nav != final_node)
     {
         printf("Value: %d\n", nav->value);
         nav = nav->next;
     }
     printf("Value: %d\n", nav->value);
-}
-
-void    free_list(t_circledata **start)
-{
-    t_circledata *final_node;
-    t_circledata *nav;
-    final_node = (*start)->prev;
-    nav = (*start);
-    while ((*start) != final_node)
-    {
-        (*start) = (*start)->next;
-        free(nav);
-        nav = (*start);
-    }
-    free(nav);
 }
