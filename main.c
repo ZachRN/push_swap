@@ -6,24 +6,23 @@ int	main(int argc, char *argv[])
 {
 	int error;
 	t_head stack_a_head;
+	t_commands	*start;
 
 	if (!(argc > 1))
 		printf("error");
 	error = input_numbers(argc, argv, &stack_a_head);
-	//printf("Error 1");
 	if (error == -1)
 		printf("error");
 	error = duplication_check_two(stack_a_head.head, argc);
-	//printf("Error 2");
 	if (error -1)
 		printf("error");
-	error = action_input(stack_a_head.head);
+	error = action_input(stack_a_head.head, start);
 	if (error -1)
 		printf("error");
-	if (error != -1)
-		print_list(stack_a_head.head);
-	//free_list(stack_a_head.head);
-	system("leaks a.out");
+	error = sort_stacks(&stack_a_head, start)
+	// if (error != -1)
+	// 	print_list(stack_a_head.head);
+	// system("leaks a.out");
 	return (0);
 }
 	//char *line;

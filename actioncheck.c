@@ -2,7 +2,7 @@
 
 int action_check(char *str)
 {
-	static char actions[ACTION_AMT][ACTION_STRLEN_MAX] =
+	static const char actions[ACTION_AMT][ACTION_STRLEN_MAX] =
 	{
 		"sa",
 		"sb",
@@ -21,17 +21,15 @@ int action_check(char *str)
 	i = 0;
 	while (i < ACTION_AMT)
 	{
-		if (ft_strncmp(str, actions[i], 6) == 0)
+		if (ft_strncmp(str, actions[i], 4) == 0)
 			return (1);
 		i++;
 	}
 	return (-1);
 }
 
-int action_input(t_circledata *stack_a)
+int action_input(t_circledata *stack_a, t_commands	*start;)
 {
-	//LINKED LIST COMMANDS TOGETHER MAKES MOST SENSE
-	t_commands	*start;
 	char 		*cmd;
 	int			error;
 
@@ -47,7 +45,7 @@ int action_input(t_circledata *stack_a)
 		error = action_check(cmd);
 		if (error == -1)
 			return (free_action(stack_a, start, cmd));
-		cmdInsertEnd(start, cmd);
+		cmdInsertEnd(start, cmd, error);
 	}
 	cmdprint_list(start);
 	free(cmd);

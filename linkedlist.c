@@ -32,7 +32,7 @@ int     insertEnd(t_circledata *start, int value, int error)
     final_node->next = new_node;
     return (error);
 }
-int cmdInsertEnd(t_commands *start, char *cmd)
+int cmdInsertEnd(t_commands *start, char *cmd, int error)
 {
 	t_commands *new_node;
 
@@ -40,10 +40,12 @@ int cmdInsertEnd(t_commands *start, char *cmd)
 	if (!new_node)
 		return (-1);
 	new_node->str = NULL;
+	new_node->pos = -1;
 	new_node->next = NULL;
 	while (start->next)
 		start = start->next;
 	start->str = cmd;
+	start->pos = error;
 	start->next = new_node;
 	return (1);
 }

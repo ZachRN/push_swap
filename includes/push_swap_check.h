@@ -24,6 +24,7 @@ typedef struct s_head
 typedef struct s_commands
 {
 	char *str;
+	int pos;
 	struct s_commands *next;
 }				t_commands;
 
