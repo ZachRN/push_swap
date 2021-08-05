@@ -1,21 +1,29 @@
-NAME = push_swap.a
-BUILD_DIR = build
-# PUSH_SWAP_FILES = main.o
+NAME = push_swap
+OBJ_FILES = actioninputcheck.o\
+				actionlinkedlist.o\
+				actions_prr.o\
+				actions_sr.o\
+				errorhandle.o\
+				numinputcheck.o\
+				sort_list.o\
+				stacklinkedlist.o\
+				main.o
+HEADER_FILES = push_swap_check.h
 CFLAGS = -Wall -Werror -Wextra
 CC = gcc
 
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES) build_dir
+$(NAME): $(OBJ_FILES)
 	@echo Compiling Libft, GNL, and ft_printf together
-	@ make -C ./srcs bonus > /dev/null
+	@ make -C ./srcs/libft/ bonus > /dev/null
 	@echo libft.a compiled
-	@echo Compiling Push_swap files together
-#code in
-	@echo Push_swap.a completed
 	@echo Assembling Program completely
-#code in
+	$(CC) -o $@ $^ srcs/libft/libft.a $(CFLAGS)
 	@echo Program assembled!
+
+%.o: %.c
+	$(CC) -I ./includes -c $(CFLAGS) -o $@ $<
 
 build_dir:
 	clear
@@ -28,16 +36,16 @@ build_dir:
 clean:
 	clear
 	@echo Cleaning all object files
-	@ make clean -C ./srcs > /dev/null
+	@ make clean -C ./srcs/libft > /dev/null
 	@echo libft.o files cleaned
+	@ rm -f *.o
 
 fclean: clean
 	@ echo Cleaning all Object Files
-	@ make fclean -C ./srcs > /dev/null
+	@ make fclean -C ./srcs/libft > /dev/null
 	@echo Cleaning Libraries
 	@echo Removing Program
 	@echo Removing Build Directory
-	@ rmdir $(BUILD_DIR)
 	@ rm -f $(NAME)
 
 re: fclean all

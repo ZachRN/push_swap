@@ -52,7 +52,7 @@ $(NAME): $(OBJ_FILES)
 	ar rc $@ $^
 
 %.o: %.c
-	$(CC) -I ../includes -c $(CFLAGS) -o $@ $<
+	$(CC) -I ../../includes -c $(CFLAGS) -o $@ $<
 
 clean:
 	rm -f *.o
