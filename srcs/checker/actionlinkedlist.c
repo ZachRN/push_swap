@@ -1,8 +1,8 @@
 #include "push_swap_check.h"
 
-int cmdInsertEnd(t_commands *start, char *cmd)
+int	cmdInsertEnd(t_commands *start, char *cmd)
 {
-	t_commands *new_node;
+	t_commands	*new_node;
 
 	new_node = (t_commands *)malloc(sizeof(t_commands));
 	if (!new_node)
@@ -18,8 +18,8 @@ int cmdInsertEnd(t_commands *start, char *cmd)
 
 void	cmdFree_List(t_commands *start)
 {
-	t_commands *nav;
-	
+	t_commands	*nav;
+
 	if (!start)
 		return ;
 	nav = start;

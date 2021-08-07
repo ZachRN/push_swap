@@ -34,8 +34,11 @@ int				insertEnd(t_circledata *start, int value);
 void			free_list(t_circledata *start);
 void			print_list(t_circledata *start);
 /*--------------Number Input Verificatio---------------*/
-/*-------------------numinputcheck.c-------------------*/
-int				ps_atoi(const char *str, int *numInput);
+/*--------numinputcheck.c && strnuminputcheck.c--------*/
+int				str_ps_atoi(char *str, int *numInput, int i);
+int				string_input_numbers(char *argv[], t_head *stack_a);
+int				str_in_loop(char *str, int i, t_head *stack_a);
+int				ps_atoi(char *str, int *numInput);
 int				input_numbers(int argc, char *argv[], t_head *stack_a);
 int				dupe_check_list(t_circledata *stack_a, int numinput, int *list);
 int				duplication_check_two(t_circledata *stack_a, int argc);

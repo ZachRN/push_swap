@@ -27,11 +27,14 @@ int	OK_call(t_head *stack_a, t_commands *start)
 
 int	KO_call(t_head *stack_a, t_head *stack_b, t_commands *start)
 {
-	write(1,"4",1);
 	free_list(stack_a->head);
-	free_list(stack_b->head);
-	start = start->next;
-	cmdFree_List(start);
+	if (stack_b->head != NULL)
+		free_list(stack_b->head);
+	if (start->next != NULL)
+	{
+		start = start->next;
+		cmdFree_List(start);
+	}
 	write(1, "KO\n", 2);
 	return (-1);
 }

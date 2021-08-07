@@ -14,20 +14,24 @@ void	rotate(t_head *stack_head)
 void	swap(t_head *stack_head)
 {
 	t_circledata	*current;
-	int				numone;
-	int				numtwo;
+	t_circledata	*next;
+	t_circledata	*prev;
 
 	if (stack_head->head == NULL)
 		return ;
 	current = stack_head->head;
 	if (current->next == current)
 		return ;
-	numone = current->value;
-	current = current->next;
-	numtwo = current->value;
-	current->value = numone;
-	current = current->prev;
-	current->value = numtwo;
+	stack_head->head = current->next;
+	next = current->next;
+	prev = current->prev;
+	prev->next = next;
+	next->prev = prev;
+	current->prev = next;
+	prev = next->next;
+	next->next = current;
+	current->next = prev;
+	prev->prev = current;
 }
 
 void	swap_both(t_head *stack_a, t_head *stack_b)

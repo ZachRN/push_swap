@@ -1,29 +1,30 @@
 #include "push_swap_check.h"
 
-int	ps_atoi(const char *str, int *numInput)
+int	ps_atoi(char *str, int *numInput)
 {
 	int			sign;
+	int			i;
 	long int	value;
 
 	sign = 1;
+	i = 0;
 	value = 0;
-	if (*str == '-')
+	if (str[i] == '-')
 	{
 		sign = -1;
-		str++;
+		i = 1;
 	}
-	if (!(*str >= '0' && *str <= '9'))
+	if (!(str[i] >= '0' && str[i] <= '9'))
 		return (-1);
-	while (*str >= '0' && *str <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		value = (value * 10) + (*str - '0');
+		value = (value * 10) + (str[i] - '0');
 		if (value > 2147483647 || value * -1 < -2147483648)
 			return (-1);
-		str++;
+		i++;
 	}
-	if (!((*str >= '0' && *str <= '9') || *str == '\0'))
+	if (!((str[i] >= '0' && str[i] <= '9') || str[i] == '\0'))
 		return (-1);
-	//*num = (int)(value * sign);
 	*numInput = (int)value;
 	return (1);
 }

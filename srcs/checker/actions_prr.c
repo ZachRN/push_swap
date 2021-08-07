@@ -35,10 +35,7 @@ void	push(t_head *stack_take_head, t_head *stack_give_head)
 	prev->next = next;
 	next->prev = prev;
 	if (stack_take_head->head == NULL)
-	{
-		push_empty(stack_take_head, current);
-		return ;
-	}
+		return (push_empty(stack_take_head, current));
 	next = stack_take_head->head;
 	prev = next->prev;
 	prev->next = current;

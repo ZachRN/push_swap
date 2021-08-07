@@ -1,5 +1,4 @@
 #include "push_swap_check.h"
-#include <stdio.h>
 
 void	action_call(t_head *stack_a, t_head *stack_b, char *action)
 {
@@ -61,7 +60,6 @@ int	sort_list(t_head *stack_a, t_commands *start)
 		start_nav = start_nav->next;
 	}
 	error = list_check(stack_a, &stack_b);
-	print_list(stack_a->head);
 	if (error == -1)
 		return (KO_call(stack_a, &stack_b, start));
 	return (OK_call(stack_a, start));

@@ -2,6 +2,7 @@
 
 int	action_check(char *str)
 {
+	int					i;
 	static const char	actions[ACTION_AMT][ACTION_STRLEN_MAX] =
 	{
 		"sa",
@@ -16,7 +17,6 @@ int	action_check(char *str)
 		"rrb",
 		"rrr"
 	};
-	int					i;
 
 	i = 0;
 	while (i < ACTION_AMT)
