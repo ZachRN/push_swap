@@ -10,8 +10,9 @@ int	error_action(t_circledata *stack_a, t_commands *start, char *cmd)
 	return (-1);
 }
 
-int	error_call(void)
+int	error_call(t_circledata *stack_a)
 {
+	free_list(stack_a);
 	write(1, "Error\n", 6);
 	return (-1);
 }

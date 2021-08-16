@@ -14,7 +14,7 @@ int	main(int argc, char *argv[])
 		error = input_numbers(argc, argv, &stack_a);
 	if (error == -1)
 		return (0);
-	error = duplication_check_two(stack_a.head, argc);
+	error = duplication_check_two(stack_a.head);
 	if (error == -1)
 		return (0);
 	error = action_input(stack_a.head, &start);

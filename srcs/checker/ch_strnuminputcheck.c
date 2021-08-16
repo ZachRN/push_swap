@@ -23,7 +23,7 @@ int	str_ps_atoi(char *str, int *numInput, int i)
 	}
 	if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ' ' || str[i] == '\0'))
 		return (-1);
-	*numInput = (int)value;
+	*numInput = (int)value * sign;
 	return (i);
 }
 
@@ -60,13 +60,10 @@ int	string_input_numbers(char *argv[], t_head *stack_a)
 	error = str_ps_atoi(str, &numInput, 0);
 	i = error;
 	if (error == -1)
-		return (error_call());
+		return (error_call(stack_a->head));
 	stack_a->head = firstEntry(numInput);
 	error = str_in_loop(str, i, stack_a);
 	if (error == -1)
-	{
-		free_list(stack_a->head);
-		return (error_call());
-	}
+		return (error_call(stack_a->head));
 	return (1);
 }

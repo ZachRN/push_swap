@@ -35,6 +35,8 @@ void	free_list(t_circledata *start)
 	t_circledata	*final_node;
 	t_circledata	*nav;
 
+	if (start == NULL)
+		return ;
 	final_node = start->prev;
 	nav = start;
 	while (start != final_node)

@@ -1,25 +1,33 @@
 NAME = push_swap
-#PUSH_SWAP_OBJ_FILES = 
+PUSH_SWAP_OBJ_FILES =	$(BUILD_DIR)/ps_actions_prr.o\
+						$(BUILD_DIR)/ps_actions_sr.o\
+						$(BUILD_DIR)/ps_errorhandle.o\
+						$(BUILD_DIR)/ps_main.o\
+						$(BUILD_DIR)/ps_numinputcheck.o\
+						$(BUILD_DIR)/ps_radix_sort.o\
+						$(BUILD_DIR)/ps_sort_value_radix.o\
+						$(BUILD_DIR)/ps_stacklinkedlist.o\
+						$(BUILD_DIR)/ps_strnuminputcheck.o
 CHECKER_NAME = checker
-CHECKER_OBJ_FILES =	$(BUILD_DIR)/actioninputcheck.o\
-					$(BUILD_DIR)/actionlinkedlist.o\
-					$(BUILD_DIR)/actions_prr.o\
-					$(BUILD_DIR)/actions_sr.o\
-					$(BUILD_DIR)/errorhandle.o\
-					$(BUILD_DIR)/numinputcheck.o\
-					$(BUILD_DIR)/sort_list.o\
-					$(BUILD_DIR)/stacklinkedlist.o\
-					$(BUILD_DIR)/strnuminputcheck.o\
-					$(BUILD_DIR)/main.o
+CHECKER_OBJ_FILES =	$(BUILD_DIR)/ch_actioninputcheck.o\
+					$(BUILD_DIR)/ch_actionlinkedlist.o\
+					$(BUILD_DIR)/ch_actions_prr.o\
+					$(BUILD_DIR)/ch_actions_sr.o\
+					$(BUILD_DIR)/ch_errorhandle.o\
+					$(BUILD_DIR)/ch_numinputcheck.o\
+					$(BUILD_DIR)/ch_sort_list.o\
+					$(BUILD_DIR)/ch_stacklinkedlist.o\
+					$(BUILD_DIR)/ch_strnuminputcheck.o\
+					$(BUILD_DIR)/ch_main.o
 BUILD_DIR = build
-SRC_DIR = srcs/checker
+VPATH = srcs/checker:srcs/push_swap_src
 HEADER_FILES = includes/push_swap_check.h
 CFLAGS = -Wall -Werror -Wextra
 CC = gcc
 
 all: build_dir $(NAME)
 
-$(NAME): $(OBJ_FILES)
+$(NAME): $(PUSH_SWAP_OBJ_FILES)
 	@echo Compiling Libft, GNL, and ft_printf together
 	@ make -C ./srcs/libft/ bonus > /dev/null
 	@echo libft.a compiled
@@ -27,7 +35,7 @@ $(NAME): $(OBJ_FILES)
 	@$(CC) -o $@ $^ srcs/libft/libft.a $(CFLAGS)
 	@echo push_swap has been made!
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+$(BUILD_DIR)/%.o: %.c
 	@$(CC) -I ./includes/ -c $(CFLAGS) -o $@ $<
 
 bonus: build_dir checker
@@ -38,7 +46,7 @@ checker: $(CHECKER_OBJ_FILES)
 	@ make -C ./srcs/libft/ bonus > /dev/null
 	@echo libft.a compiled
 	@echo Assemling checker
-	@$(CC) -o $(CHECKER_NAME) $^	 srcs/libft/libft.a $(CFLAGS)
+	@$(CC) -o $(CHECKER_NAME) $^ srcs/libft/libft.a $(CFLAGS)
 	@echo checker has been assembled!
 
 build_dir:
@@ -63,6 +71,7 @@ fclean: clean
 	@if [ -d "./$(BUILD_DIR)" ]; then \
 	rmdir $(BUILD_DIR); fi
 	@ rm -f $(CHECKER_NAME)
+	@ rm -f $(NAME)
 
 re: fclean all
 
