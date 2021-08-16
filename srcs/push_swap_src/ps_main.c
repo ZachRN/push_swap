@@ -1,20 +1,5 @@
 #include "push_swap.h"
-#include <stdio.h>
 
-void print_list(t_circledata *stack_a)
-{
-	t_circledata *current;
-	t_circledata *final;
-
-	current = stack_a;
-	final = current->prev;
-	while (current != final)
-	{
-		printf("%d",current->value);
-		current = current->next;
-	}
-	printf("%d", current->value);
-}
 int	main(int argc, char *argv[])
 {
 	int			error;
