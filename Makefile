@@ -5,6 +5,7 @@ PUSH_SWAP_OBJ_FILES =	$(BUILD_DIR)/ps_actions_prr.o\
 						$(BUILD_DIR)/ps_main.o\
 						$(BUILD_DIR)/ps_numinputcheck.o\
 						$(BUILD_DIR)/ps_radix_sort.o\
+						$(BUILD_DIR)/ps_short_sort.o\
 						$(BUILD_DIR)/ps_sort_value_radix.o\
 						$(BUILD_DIR)/ps_stacklinkedlist.o\
 						$(BUILD_DIR)/ps_strnuminputcheck.o

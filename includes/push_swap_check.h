@@ -69,7 +69,7 @@ void			reverse_rotate(t_head *stack_head);
 void			reverse_rotate_both(t_head *stack_a, t_head *stack_b);
 /*-------------------Error Handling--------------------*/
 /*-------------------errorhandle.c---------------------*/
-int				error_action(t_circledata *stack_a, t_commands *start, char *cmd);
+int				error_action(t_circledata *stack, t_commands *start, char *cmd);
 int				error_call(t_circledata *stack_a);
 int				OK_call(t_head *stack_a, t_commands *start);
 int				KO_call(t_head *stack_a, t_head *stack_b, t_commands *start);

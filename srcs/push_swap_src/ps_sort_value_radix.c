@@ -1,10 +1,10 @@
 #include "push_swap.h"
 
-int		find_max(t_head *stack_a)
+int	find_max(t_head *stack_a)
 {
 	t_circledata	*current;
 	t_circledata	*final_node;
-	int 			max;
+	int				max;
 
 	current = stack_a->head;
 	final_node = current->prev;
@@ -22,31 +22,30 @@ int		find_max(t_head *stack_a)
 
 void	min_do(t_circledata *cur, t_circledata *final, int max, int i)
 {
-	t_circledata *min_node;
+	t_circledata	*min_node;
+	t_circledata	*search;
 
-	while (cur != final)
+	search = cur;
+	while (search != final)
 	{
-		if (cur->value < max && cur->radix == -1)
+		if (search->value <= max && search->radix == -1)
 		{
-			max = cur->value;
-			min_node = cur;
+			max = search->value;
+			min_node = search;
 		}
-		cur = cur->next;
+		search = search->next;
 	}
-	if (cur->value < max && cur->radix == -1)
-	{
-		max = cur->value;
-		min_node = cur;
-	}
+	if (search->value <= max && search->radix == -1)
+		min_node = search;
 	min_node->radix = i;
 }
 
 void	radix_value_assign(t_head *stack_a, int amount)
 {
-	t_circledata *current;
-	t_circledata *final;
-	int i;
-	int max;
+	t_circledata	*current;
+	t_circledata	*final;
+	int				i;
+	int				max;
 
 	current = stack_a->head;
 	final = current->prev;

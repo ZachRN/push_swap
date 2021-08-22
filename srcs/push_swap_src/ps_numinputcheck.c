@@ -76,7 +76,7 @@ int	total_ele(t_circledata *stack_a)
 {
 	t_circledata	*final_node;
 	t_circledata	*current;
-	int		i;
+	int				i;
 
 	current = stack_a;
 	final_node = current->prev;
@@ -95,7 +95,7 @@ int	duplication_check_two(t_circledata *stack_a)
 	int				numinput;
 	int				*list;
 	int				error;
-	
+
 	list = (int *)malloc(sizeof(int) * total_ele(stack_a));
 	if (!list)
 		return (error_call(stack_a));

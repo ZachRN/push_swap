@@ -18,8 +18,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	if (error > 5)
 		radix_sort(&stack_a, error);
-	// else
-	// 	small_sort;
-	// print_list(stack_a.head);
+	else
+		short_sort(&stack_a, error);
 	return (0);
 }

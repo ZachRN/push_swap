@@ -15,10 +15,10 @@
 
 # define FD_TOTAL 2048
 
-typedef struct	s_filehold
+typedef struct s_filehold
 {
-	char *all_fd[FD_TOTAL];
-	char buf[BUFFER_SIZE + 1];
+	char	*all_fd[FD_TOTAL];
+	char	buf[BUFFER_SIZE + 1];
 }				t_filehold;
 
 int		get_next_line(int fd, char **line);

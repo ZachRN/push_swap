@@ -6,15 +6,15 @@
 # include "get_next_line.h"
 # include "libft.h"
 
-typedef struct	s_circledata
+typedef struct s_circledata
 {
 	int					value;
 	int					radix;
-	struct s_circledata *prev;
-	struct s_circledata *next;
+	struct s_circledata	*prev;
+	struct s_circledata	*next;
 }				t_circledata;
 
-typedef struct	s_head
+typedef struct s_head
 {
 	t_circledata	*head;
 }				t_head;
@@ -24,6 +24,7 @@ t_circledata	*firstEntry(int value);
 int				insertEnd(t_circledata *start, int value);
 void			free_list(t_circledata *start);
 void			print_list(t_circledata *start);
+int				stack_check(t_head *stack_a);
 /*--------------Number Input Verificatio---------------*/
 /*--------numinputcheck.c && strnuminputcheck.c--------*/
 int				str_ps_atoi(char *str, int *numInput, int i);
@@ -53,7 +54,16 @@ int				list_check(t_head *stack_a, t_head *stack_b);
 void			radix_value_assign(t_head *stack_a, int amount);
 void			min_do(t_circledata *cur, t_circledata *final, int max, int i);
 int				find_max(t_head *stack_a);
+/*---------------------Radix Commands---------------------*/
+/*-----------radix_sort.c && sort_value_radix.c-----------*/
+void			short_sort(t_head *stack_a, int amount);
+void			three_sort(t_head *stack_a, int start);
+void			two_sort(void);
+void			four_sort(t_head *stack_a, t_head *stack_b, int start);
+void			five_sort(t_head *stack_a, t_head *stack_b);
+void			fs_efficient(t_head *stack_a, int i);
 /*-------------------Error Handling--------------------*/
 /*-------------------errorhandle.c---------------------*/
 int				error_call(t_circledata *stack_a);
+void			free_all(t_head *stack_a, t_head *stack_b);			
 #endif

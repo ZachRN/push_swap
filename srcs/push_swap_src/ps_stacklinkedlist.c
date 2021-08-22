@@ -47,3 +47,21 @@ void	free_list(t_circledata *start)
 	}
 	free(nav);
 }
+
+int	stack_check(t_head *stack_a)
+{
+	t_circledata	*current;
+	int				testvalue;
+
+	current = stack_a->head;
+	testvalue = current->value;
+	current = current->next;
+	while (current != stack_a->head)
+	{
+		if (testvalue > current->value)
+			return (-1);
+		testvalue = current->value;
+		current = current->next;
+	}
+	return (1);
+}
