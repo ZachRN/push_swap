@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ch_stacklinkedlist.c                               :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: znajda <znajda@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/12 13:33:28 by znajda        #+#    #+#                 */
+/*   Updated: 2022/02/12 13:33:46 by znajda        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_check.h"
 
-t_circledata	*firstEntry(int value)
+t_circledata	*firstentry(int value)
 {
 	t_circledata	*temp;
 
@@ -13,7 +25,7 @@ t_circledata	*firstEntry(int value)
 	return (temp);
 }
 
-int	insertEnd(t_circledata *start, int value)
+int	insertend(t_circledata *start, int value)
 {
 	t_circledata	*final_node;
 	t_circledata	*new_node;

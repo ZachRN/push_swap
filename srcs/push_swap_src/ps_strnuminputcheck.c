@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ps_strnuminputcheck.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: znajda <znajda@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/12 13:51:10 by znajda        #+#    #+#                 */
+/*   Updated: 2022/02/12 13:51:38 by znajda        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_check.h"
 
-int	str_ps_atoi(char *str, int *numInput, int i)
+int	str_ps_atoi(char *str, int *numinput, int i)
 {
 	int			sign;
 	long int	value;
@@ -23,26 +35,26 @@ int	str_ps_atoi(char *str, int *numInput, int i)
 	}
 	if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ' ' || str[i] == '\0'))
 		return (-1);
-	*numInput = (int)value * sign;
+	*numinput = (int)value * sign;
 	return (i);
 }
 
 int	str_in_loop(char *str, int i, t_head *stack_a)
 {
 	int	error;
-	int	numInput;
+	int	numinput;
 
-	numInput = 0;
+	numinput = 0;
 	while (str[i])
 	{
 		i++;
 		if ((ft_isdigit(str[i])) || str[i] == '-')
 		{
-			error = str_ps_atoi(str, &numInput, i);
+			error = str_ps_atoi(str, &numinput, i);
 			if (error == -1)
 				return (error);
 			i = error;
-			error = insertEnd(stack_a->head, numInput);
+			error = insertend(stack_a->head, numinput);
 		}	
 	}
 	return (1);
@@ -51,17 +63,17 @@ int	str_in_loop(char *str, int i, t_head *stack_a)
 int	string_input_numbers(char *argv[], t_head *stack_a)
 {
 	int		i;
-	int		numInput;
+	int		numinput;
 	int		error;
 	char	*str;
 
 	str = argv[1];
-	numInput = 0;
-	error = str_ps_atoi(str, &numInput, 0);
+	numinput = 0;
+	error = str_ps_atoi(str, &numinput, 0);
 	i = error;
 	if (error == -1)
 		return (error_call(stack_a->head));
-	stack_a->head = firstEntry(numInput);
+	stack_a->head = firstntry(numinput);
 	error = str_in_loop(str, i, stack_a);
 	if (error == -1)
 		return (error_call(stack_a->head));

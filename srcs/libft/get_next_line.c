@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   get_next_line.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: znajda <znajda@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/12 13:51:55 by znajda        #+#    #+#                 */
+/*   Updated: 2022/02/12 13:52:07 by znajda        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int	send_new_line(char **line, int fd, t_filehold *file, int pos)
@@ -18,7 +30,7 @@ int	send_new_line(char **line, int fd, t_filehold *file, int pos)
 	return (1);
 }
 
-int	send_EOF(char **line, int fd, t_filehold *file, int pos)
+int	send_eof(char **line, int fd, t_filehold *file, int pos)
 {
 	char	*temp;
 	int		strlen;
@@ -46,7 +58,7 @@ int	file_stuff(char **line, t_filehold *file, int fd)
 	if (file->all_fd[fd][pos] == '\n')
 		return (send_new_line(line, fd, file, pos));
 	else if (file->all_fd[fd][pos] == '\0')
-		return (send_EOF(line, fd, file, pos));
+		return (send_eof(line, fd, file, pos));
 	return (0);
 }
 

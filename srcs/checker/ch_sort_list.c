@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ch_sort_list.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: znajda <znajda@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/12 13:33:11 by znajda        #+#    #+#                 */
+/*   Updated: 2022/02/12 13:34:55 by znajda        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_check.h"
 
 void	action_call(t_head *stack_a, t_head *stack_b, char *action)
@@ -61,6 +73,6 @@ int	sort_list(t_head *stack_a, t_commands *start)
 	}
 	error = list_check(stack_a, &stack_b);
 	if (error == -1)
-		return (KO_call(stack_a, &stack_b, start));
-	return (OK_call(stack_a, start));
+		return (ko_call(stack_a, &stack_b, start));
+	return (o_call(stack_a, start));
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   push_swap_check.h                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: znajda <znajda@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/12 13:29:09 by znajda        #+#    #+#                 */
+/*   Updated: 2022/02/12 13:37:46 by znajda        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_CHECK_H
 # define PUSH_SWAP_CHECK_H
 
@@ -29,8 +41,8 @@ typedef struct s_commands
 
 /*------------------Stack Linked List-------------------*/
 /*------------------stackedlinkedlist.c---------------- */
-t_circledata	*firstEntry(int value);
-int				insertEnd(t_circledata *start, int value);
+t_circledata	*firstentry(int value);
+int				insertend(t_circledata *start, int value);
 void			free_list(t_circledata *start);
 void			print_list(t_circledata *start);
 /*--------------Number Input Verificatio---------------*/
@@ -45,8 +57,8 @@ int				duplication_check_two(t_circledata *stack_a);
 int				total_ele(t_circledata *stack_a);
 /*------------------Action Linked List-----------------*/
 /*------------------actionlinkedlist.c-----------------*/
-int				cmdInsertEnd(t_commands *start, char *cmd);
-void			cmdFree_List(t_commands *start);
+int				cmdinsertend(t_commands *start, char *cmd);
+void			cmdfree_list(t_commands *start);
 void			cmdprint_list(t_commands *start);
 /*--------------Action Input Verification---------------*/
 /*------------------actioninputcheck.c------------------*/
@@ -71,7 +83,7 @@ void			reverse_rotate_both(t_head *stack_a, t_head *stack_b);
 /*-------------------errorhandle.c---------------------*/
 int				error_action(t_circledata *stack, t_commands *start, char *cmd);
 int				error_call(t_circledata *stack_a);
-int				OK_call(t_head *stack_a, t_commands *start);
-int				KO_call(t_head *stack_a, t_head *stack_b, t_commands *start);
+int				ok_call(t_head *stack_a, t_commands *start);
+int				ko_call(t_head *stack_a, t_head *stack_b, t_commands *start);
 
 #endif

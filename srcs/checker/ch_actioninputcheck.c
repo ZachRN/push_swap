@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ch_actioninputcheck.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: znajda <znajda@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/12 13:29:26 by znajda        #+#    #+#                 */
+/*   Updated: 2022/02/12 13:31:54 by znajda        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_check.h"
 
 int	action_check(char *str)
 {
 	int					i;
-	static const char	actions[ACTION_AMT][ACTION_STRLEN_MAX] =
-	{
+	static const char	actions[ACTION_AMT][ACTION_STRLEN_MAX] = {
 		"sa",
 		"sb",
 		"ss",
@@ -45,7 +56,7 @@ int	action_input(t_circledata *stack_a, t_commands	*start)
 		error = action_check(cmd);
 		if (error == -1)
 			return (error_action(stack_a, start, cmd));
-		cmdInsertEnd(start, cmd);
+		cmdinsertend(start, cmd);
 	}
 	return (1);
 }

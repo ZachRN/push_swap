@@ -64,13 +64,12 @@ clean:
 	@ make clean -C ./srcs/libft > /dev/null
 	@echo libft.o files cleaned
 	@ rm -f $(BUILD_DIR)/*.o
-
-fclean: clean
-	@ echo Cleaning all Object Files
-	@ make fclean -C ./srcs/libft > /dev/null
 	@echo Removing Build Directory
 	@if [ -d "./$(BUILD_DIR)" ]; then \
 	rmdir $(BUILD_DIR); fi
+	
+fclean: clean
+	@ make fclean -C ./srcs/libft > /dev/null
 	@ rm -f $(CHECKER_NAME)
 	@ rm -f $(NAME)
 

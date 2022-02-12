@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ps_numinputcheck.c                                 :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: znajda <znajda@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/12 13:46:36 by znajda        #+#    #+#                 */
+/*   Updated: 2022/02/12 13:49:28 by znajda        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include <stdio.h>
 
-int	ps_atoi(char *str, int *numInput)
+int	ps_atoi(char *str, int *numinput)
 {
 	int			sign;
 	int			i;
@@ -26,28 +38,28 @@ int	ps_atoi(char *str, int *numInput)
 	}
 	if (!((str[i] >= '0' && str[i] <= '9') || str[i] == '\0'))
 		return (-1);
-	*numInput = (int)value * sign;
+	*numinput = (int)value * sign;
 	return (1);
 }
 
 int	input_numbers(int argc, char *argv[], t_head *stack_a)
 {
 	int	input;
-	int	numInput;
+	int	numinput;
 	int	error;
 
 	input = 1;
-	numInput = 0;
-	error = ps_atoi(argv[1], &numInput);
+	numinput = 0;
+	error = ps_atoi(argv[1], &numinput);
 	if (error == -1)
 		return (error_call(stack_a->head));
-	stack_a->head = firstEntry(numInput);
+	stack_a->head = firstentry(numinput);
 	while (error != -1 && input < argc - 1)
 	{
-		error = ps_atoi(argv[input + 1], &numInput);
+		error = ps_atoi(argv[input + 1], &numinput);
 		if (error == -1)
 			break ;
-		error = insertEnd(stack_a->head, numInput);
+		error = insertend(stack_a->head, numinput);
 		input++;
 	}
 	if (error == -1)

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ch_actionlinkedlist.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: znajda <znajda@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/12 13:29:49 by znajda        #+#    #+#                 */
+/*   Updated: 2022/02/12 13:56:59 by znajda        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_check.h"
 
-int	cmdInsertEnd(t_commands *start, char *cmd)
+int	cmdinsertend(t_commands *start, char *cmd)
 {
 	t_commands	*new_node;
 
@@ -16,7 +28,7 @@ int	cmdInsertEnd(t_commands *start, char *cmd)
 	return (1);
 }
 
-void	cmdFree_List(t_commands *start)
+void	cmdfree_list(t_commands *start)
 {
 	t_commands	*nav;
 
@@ -31,13 +43,4 @@ void	cmdFree_List(t_commands *start)
 		nav = start;
 	}
 	free(nav);
-}
-
-void	cmdprint_list(t_commands *start)
-{
-	while (start->next)
-	{
-		printf("Cmd: %s\n", start->str);
-		start = start->next;
-	}
 }
