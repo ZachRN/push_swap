@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/12 13:29:03 by znajda        #+#    #+#                 */
-/*   Updated: 2022/02/12 13:29:05 by znajda        ########   odam.nl         */
+/*   Updated: 2022/03/04 16:01:59 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct s_head
 }				t_head;
 /*------------------Stack Linked List-------------------*/
 /*------------------stackedlinkedlist.c---------------- */
-t_circledata	*firstEntry(int value);
-int				insertEnd(t_circledata *start, int value);
+t_circledata	*firstentry(int value);
+int				insertend(t_circledata *start, int value);
 void			free_list(t_circledata *start);
 void			print_list(t_circledata *start);
 int				stack_check(t_head *stack_a);

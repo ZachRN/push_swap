@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/12 13:51:10 by znajda        #+#    #+#                 */
-/*   Updated: 2022/02/12 13:51:38 by znajda        ########   odam.nl         */
+/*   Updated: 2022/07/13 11:01:09 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	string_input_numbers(char *argv[], t_head *stack_a)
 	i = error;
 	if (error == -1)
 		return (error_call(stack_a->head));
-	stack_a->head = firstntry(numinput);
+	stack_a->head = firstentry(numinput);
 	error = str_in_loop(str, i, stack_a);
 	if (error == -1)
 		return (error_call(stack_a->head));

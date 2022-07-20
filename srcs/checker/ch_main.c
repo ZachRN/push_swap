@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/12 13:32:06 by znajda        #+#    #+#                 */
-/*   Updated: 2022/02/12 13:32:07 by znajda        ########   odam.nl         */
+/*   Updated: 2022/07/20 12:16:46 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ int	main(int argc, char *argv[])
 	t_head		stack_a;
 	t_commands	start;
 
-	if (argc < 1)
-		return (0);
+	if (argc < 2)
+		exit(EXIT_FAILURE);
 	if (argc == 2)
 		error = string_input_numbers(argv, &stack_a);
 	else
 		error = input_numbers(argc, argv, &stack_a);
 	if (error == -1)
-		return (0);
+		exit(EXIT_FAILURE);
 	error = duplication_check_two(stack_a.head);
 	if (error == -1)
-		return (0);
+		exit(EXIT_FAILURE);
 	error = action_input(stack_a.head, &start);
 	if (error == -1)
-		return (0);
+		exit(EXIT_FAILURE);
 	error = sort_list(&stack_a, &start);
-	return (0);
+	exit(EXIT_SUCCESS);
 }

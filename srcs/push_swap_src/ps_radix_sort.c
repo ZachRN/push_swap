@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/12 13:47:55 by znajda        #+#    #+#                 */
-/*   Updated: 2022/02/12 13:47:56 by znajda        ########   odam.nl         */
+/*   Updated: 2022/07/20 12:17:10 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	bit_shift(t_head *stack_a, t_head *stack_b, int i, int num)
 {
 	if (((num >> i) & 1) == 1)
 	{
-		write(1, "ra\n", 3);
+		write(STDOUT_FILENO, "ra\n", 3);
 		rotate(stack_a);
 	}
 	else
 	{
-		write(1, "pb\n", 3);
+		write(STDOUT_FILENO, "pb\n", 3);
 		push(stack_b, stack_a);
 	}
 }
@@ -81,7 +81,7 @@ void	radix_sort(t_head *stack_a, int amount)
 	maxbits = 1;
 	stack_b.head = NULL;
 	if (list_check(stack_a, &stack_b) == 1)
-		return ;
+		return ((void)(free_all(stack_a, &stack_b)));
 	radix_value_assign(stack_a, amount);
 	while (((amount - 1) >> maxbits) != 0)
 		maxbits++;

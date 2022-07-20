@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/12 13:48:17 by znajda        #+#    #+#                 */
-/*   Updated: 2022/02/12 13:48:18 by znajda        ########   odam.nl         */
+/*   Updated: 2022/07/20 12:17:21 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ void	three_sort(t_head *stack_a, int start)
 	data = stack_a->head;
 	next = data->next;
 	if (data->radix == (0 + start))
-		write(1, "sa\nra\n", 6);
+		write(STDOUT_FILENO, "sa\nra\n", 6);
 	else if (data->radix == (1 + start))
 	{
 		if (next->radix == (2 + start))
-			write(1, "rra\n", 4);
+			write(STDOUT_FILENO, "rra\n", 4);
 		else
-			write(1, "sa\n", 3);
+			write(STDOUT_FILENO, "sa\n", 3);
 	}
 	else
 	{
 		if (next->radix == (0 + start))
-			write(1, "ra\n", 3);
+			write(STDOUT_FILENO, "ra\n", 3);
 		else
-			write(1, "sa\nrra\n", 7);
+			write(STDOUT_FILENO, "sa\nrra\n", 7);
 	}
 }
 
@@ -45,14 +45,14 @@ void	four_sort(t_head *stack_a, t_head *stack_b, int start)
 	if (search->prev->radix == (0 + start))
 	{
 		reverse_rotate(stack_a);
-		write(1, "rra\n", 4);
+		write(STDOUT_FILENO, "rra\n", 4);
 		search = search->prev;
 	}
 	else
 	{
 		while (search->radix != (0 + start))
 		{
-			write(1, "ra\n", 3);
+			write(STDOUT_FILENO, "ra\n", 3);
 			rotate(stack_a);
 			search = search->next;
 		}
@@ -60,9 +60,9 @@ void	four_sort(t_head *stack_a, t_head *stack_b, int start)
 	if (stack_check(stack_a) == 1)
 		return ;
 	push(stack_b, stack_a);
-	write(1, "pb\n", 3);
+	write(STDOUT_FILENO, "pb\n", 3);
 	three_sort(stack_a, (1 + start));
-	write(1, "pa\n", 3);
+	write(STDOUT_FILENO, "pa\n", 3);
 }
 
 void	fs_efficient(t_head *stack_a, int i)
@@ -72,7 +72,7 @@ void	fs_efficient(t_head *stack_a, int i)
 		while (i < 5)
 		{
 			reverse_rotate(stack_a);
-			write(1, "rra\n", 4);
+			write(STDOUT_FILENO, "rra\n", 4);
 			i++;
 		}
 	}
@@ -81,7 +81,7 @@ void	fs_efficient(t_head *stack_a, int i)
 		while (i != 0)
 		{
 			rotate(stack_a);
-			write(1, "ra\n", 3);
+			write(STDOUT_FILENO, "ra\n", 3);
 			i--;
 		}
 	}
@@ -103,9 +103,9 @@ void	five_sort(t_head *stack_a, t_head *stack_b)
 	if (stack_check(stack_a) == 1)
 		return ;
 	push(stack_b, stack_a);
-	write(1, "pb\n", 3);
+	write(STDOUT_FILENO, "pb\n", 3);
 	four_sort(stack_a, stack_b, 1);
-	write(1, "pa\n", 3);
+	write(STDOUT_FILENO, "pa\n", 3);
 }
 
 void	short_sort(t_head *stack_a, int amount)
@@ -116,7 +116,7 @@ void	short_sort(t_head *stack_a, int amount)
 	maxbits = 1;
 	stack_b.head = NULL;
 	if (list_check(stack_a, &stack_b) == 1)
-		return ;
+		return ((void)(free_all(stack_a, &stack_b)));
 	radix_value_assign(stack_a, amount);
 	if (amount == 2)
 		swap(stack_a);

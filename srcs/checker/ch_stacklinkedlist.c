@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/12 13:33:28 by znajda        #+#    #+#                 */
-/*   Updated: 2022/02/12 13:33:46 by znajda        ########   odam.nl         */
+/*   Updated: 2022/07/13 14:46:33 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,17 @@ void	free_list(t_circledata *start)
 	t_circledata	*final_node;
 	t_circledata	*nav;
 
-	if (start == NULL)
+	if (!start)
 		return ;
 	final_node = start->prev;
 	nav = start;
-	while (start != final_node)
+	while (start && start != final_node)
 	{
 		start = start->next;
-		free(nav);
+		if (nav)
+			free(nav);
 		nav = start;
 	}
-	free(nav);
+	if (nav)
+		free(nav);
 }

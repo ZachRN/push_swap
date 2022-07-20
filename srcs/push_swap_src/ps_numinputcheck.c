@@ -6,12 +6,11 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/12 13:46:36 by znajda        #+#    #+#                 */
-/*   Updated: 2022/02/12 13:49:28 by znajda        ########   odam.nl         */
+/*   Updated: 2022/07/13 11:08:07 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	ps_atoi(char *str, int *numinput)
 {

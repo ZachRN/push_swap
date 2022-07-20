@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/12 13:33:11 by znajda        #+#    #+#                 */
-/*   Updated: 2022/02/12 13:34:55 by znajda        ########   odam.nl         */
+/*   Updated: 2022/03/04 16:03:09 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ int	sort_list(t_head *stack_a, t_commands *start)
 	error = list_check(stack_a, &stack_b);
 	if (error == -1)
 		return (ko_call(stack_a, &stack_b, start));
-	return (o_call(stack_a, start));
+	return (ok_call(stack_a, start));
 }
